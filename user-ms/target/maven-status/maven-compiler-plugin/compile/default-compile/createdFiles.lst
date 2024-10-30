@@ -1,0 +1,6 @@
+ma\emsi\organisationms\userms\Service\UserInterfaceImpl.class
+ma\emsi\organisationms\userms\Repository\UserRepo.class
+ma\emsi\organisationms\userms\Controller\UserController.class
+ma\emsi\organisationms\userms\UserMsApplication.class
+ma\emsi\organisationms\userms\Service\UserInterface.class
+ma\emsi\organisationms\userms\DAO\User.class

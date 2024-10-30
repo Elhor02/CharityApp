@@ -1,0 +1,6 @@
+ma\emsi\organisationms\Service\OrganisationService.class
+ma\emsi\organisationms\Controller\OrganisationController.class
+ma\emsi\organisationms\Repository\OrganisationRepo.class
+ma\emsi\organisationms\DAO\Organisation.class
+ma\emsi\organisationms\Service\OrganisationServiceImpl.class
+ma\emsi\organisationms\OrganisationMsApplication.class
