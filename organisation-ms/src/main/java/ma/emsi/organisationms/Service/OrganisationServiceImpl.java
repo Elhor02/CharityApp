@@ -30,6 +30,6 @@ public class OrganisationServiceImpl implements OrganisationService{
     public Organisation findOrganisationById(Long id) {
         return orgRepo.findById(id).get();
     }
-    
+
 }
 
