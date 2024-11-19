@@ -6,14 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="gateway-ms" />
         <module name="organisation-ms" />
         <module name="user-ms" />
-        <module name="gateway-service" />
+        <module name="discovery-ms" />
+        <module name="donation-ms" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gateway-service" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="discovery-ms" options="-parameters" />
+      <module name="donation-ms" options="-parameters" />
+      <module name="gateway-ms" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="organisation-ms" options="-parameters" />
       <module name="user-ms" options="-parameters" />

@@ -1,10 +1,9 @@
 package ma.emsi.organisationms.userms.Controller;
 
-import ma.emsi.organisationms.userms.DAO.User;
+import ma.emsi.organisationms.userms.DAO.Users;
 import ma.emsi.organisationms.userms.Service.UserInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,22 +14,22 @@ public class UserController {
     private UserInterface userInterface;
 
     @RequestMapping("/getAllUsers")
-    public List<User> getAllUsers(){
+    public List<Users> getAllUsers(){
         return userInterface.getAllUsers();
     }
 
-    @RequestMapping("/getUserById")
-        public User getUser(Long id){
+    @RequestMapping("/getUserById/{id}")
+        public Users getUser(@PathVariable Long id){
         return userInterface.findUserById(id);
     }
 
-    @RequestMapping("/createUser")
-    public void createUser(User user){
+    @PostMapping("/createUser")
+    public void createUser(@RequestBody Users user){
         userInterface.createUser(user);
     }
 
-    @RequestMapping("/deleteUser")
-    public void deleteUserById(Long id){
+    @DeleteMapping("/deleteUserById/{id}")
+    public void deleteUserById(@PathVariable Long id){
         userInterface.deleteUserById(id);
     }
 }

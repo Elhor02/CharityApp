@@ -3,8 +3,7 @@ package ma.emsi.organisationms.Controller;
 import ma.emsi.organisationms.DAO.Organisation;
 import ma.emsi.organisationms.Service.OrganisationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,18 +18,18 @@ public class OrganisationController {
         return orgInterface.getAllOrganisations();
     }
 
-    @RequestMapping("/getOrganisationById")
-    public Organisation getOrganisation(Long id){
+    @RequestMapping("/getOrganisationById/{id}")
+    public Organisation getOrganisation(@PathVariable Long id){
         return orgInterface.findOrganisationById(id);
     }
 
-    @RequestMapping("/createOrganisation")
-    public void createOrganisation(Organisation org){
-        orgInterface.createOrganisation(org);
+    @PostMapping("/createOrganisation")
+    public Organisation createOrganisation(@RequestBody Organisation org){
+        return orgInterface.createOrganisation(org);
     }
 
-    @RequestMapping("/deleteOrganisation")
-    public void deleteOrganisationById(Long id){
+    @DeleteMapping("/deleteOrganisationById/{id}")
+    public void deleteOrganisationById(@PathVariable Long id){
         orgInterface.deleteOrganisationById(id);
     }
 }
