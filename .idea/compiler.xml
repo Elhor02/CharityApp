@@ -10,6 +10,7 @@
         <module name="organisation-ms" />
         <module name="user-ms" />
         <module name="discovery-ms" />
+        <module name="ms-config" />
         <module name="donation-ms" />
       </profile>
     </annotationProcessing>
@@ -23,6 +24,7 @@
       <module name="donation-ms" options="-parameters" />
       <module name="gateway-ms" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
+      <module name="ms-config" options="-parameters" />
       <module name="organisation-ms" options="-parameters" />
       <module name="user-ms" options="-parameters" />
     </option>

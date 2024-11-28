@@ -1,10 +1,13 @@
 spring:
   application:
-    name: api-gateway
+    name: gateway-ms
+  config:
+    import: optional:configserver:http://localhost:8090
+server:
+  port: 8080
 
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
+
+
+
+
+

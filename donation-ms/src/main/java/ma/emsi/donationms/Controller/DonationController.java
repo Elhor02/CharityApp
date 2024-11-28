@@ -1,7 +1,9 @@
 package ma.emsi.donationms.Controller;
 
 import ma.emsi.donationms.DAO.Donation;
-import ma.emsi.donationms.Service.DonationService;
+import ma.emsi.donationms.Repository.DonationRepo;
+import ma.emsi.donationms.Service.OrganisationModelRestClient;
+import ma.emsi.donationms.Service.UserModelRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,25 +13,17 @@ import java.util.List;
 @RequestMapping("/Donations")
 public class DonationController {
     @Autowired
-    private DonationService donInterface;
+    OrganisationModelRestClient orgRest;
+    @Autowired
+    UserModelRestClient usrRest;
+    @Autowired
+    DonationRepo donationRepo;
 
-    @RequestMapping("/getAllDonations")
-    public List<Donation> getAllDonations(){
-        return donInterface.getAllDonations();
-    }
-
-    @RequestMapping("/getDonationById/{id}")
-    public Donation getdonation(@PathVariable Long id){
-        return donInterface.findDonationById(id);
-    }
-
-    @PostMapping("/createDonation")
-    public Donation createdonation(@RequestBody Donation org){
-        return donInterface.createDonation(org);
-    }
-
-    @DeleteMapping("/deleteDonationById/{id}")
-    public void deleteDonationById(@PathVariable Long id){
-        donInterface.deleteDonationById(id);
+    @GetMapping("/getDonationById/{id}")
+    public Donation getDonationById(@PathVariable long id){
+        Donation donation = donationRepo.findById(id).get();
+        donation.setUsr(usrRest.getUserById(donation.getUserId()));
+        donation.setOrg(orgRest.getOrganisationById(donation.getOrganisationId()));
+        return donation;
     }
 }

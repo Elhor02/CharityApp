@@ -19,7 +19,7 @@ public class OrganisationController {
     }
 
     @RequestMapping("/getOrganisationById/{id}")
-    public Organisation getOrganisation(@PathVariable Long id){
+    public Organisation getOrganisationById(@PathVariable Long id){
         return orgInterface.findOrganisationById(id);
     }
 

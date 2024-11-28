@@ -19,7 +19,7 @@ public class UserController {
     }
 
     @RequestMapping("/getUserById/{id}")
-        public Users getUser(@PathVariable Long id){
+        public Users getUserById(@PathVariable Long id){
         return userInterface.findUserById(id);
     }
 
