@@ -2,6 +2,7 @@ package ma.emsi.donationms.Controller;
 
 import ma.emsi.donationms.DAO.Donation;
 import ma.emsi.donationms.Repository.DonationRepo;
+import ma.emsi.donationms.Service.KafkaSender;
 import ma.emsi.donationms.Service.OrganisationModelRestClient;
 import ma.emsi.donationms.Service.UserModelRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class DonationController {
     UserModelRestClient usrRest;
     @Autowired
     DonationRepo donationRepo;
+    @Autowired
+    private KafkaSender kafkaSenderService;
 
     @GetMapping("/getDonationById/{id}")
     public Donation getDonationById(@PathVariable long id){
@@ -25,5 +28,11 @@ public class DonationController {
         donation.setUsr(usrRest.getUserById(donation.getUserId()));
         donation.setOrg(orgRest.getOrganisationById(donation.getOrganisationId()));
         return donation;
+    }
+
+    @PostMapping("/{donationId}/notify")
+    public String notifyDonation(@PathVariable Long donationId, @RequestBody String message) {
+        kafkaSenderService.sendMessage(message, "donation-topic");
+        return "Message sent to Kafka topic for donation ID: " + donationId;
     }
 }
