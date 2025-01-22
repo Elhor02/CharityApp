@@ -14,19 +14,11 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class DonationMsApplication implements CommandLineRunner {
-    @Autowired
-    OrganisationModelRestClient orgRest;
-    @Autowired
-    UserModelRestClient usrRest;
-    @Autowired
-    DonationRepo donationRepo;
-
+public class DonationMsApplication {
     public static void main(String[] args) {
         SpringApplication.run(DonationMsApplication.class, args);
     }
-    //userid152  6
-    @Override
+    /*@Override
     public void run(String... args) throws Exception {
         UserModel user = usrRest.getUserById(152);
         OrganisationModel orga = orgRest.getOrganisationById(1);
@@ -37,5 +29,5 @@ public class DonationMsApplication implements CommandLineRunner {
                 .org(orga)
                 .usr(user)
                 .build());
-    }
+    }*/
 }

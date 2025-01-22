@@ -12,7 +12,7 @@ public class KafkaSender {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(String message, String s) {
+    public void sendMessage(String message) {
         kafkaTemplate.send("donation-topic", message);
     }
 }
